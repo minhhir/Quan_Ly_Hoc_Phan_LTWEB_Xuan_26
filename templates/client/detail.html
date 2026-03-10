@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #0056b3; font-size: 28px; margin-bottom: 5px;">{{ hoc_phan['ten_tieng_viet'] }} ({{ hoc_phan['ma_hoc_phan'] }})</h1>
+    <p style="color: #0056b3; font-weight: bold; margin-top: 0;">Khoa Công nghệ thông tin</p>
+</div>
+
+<hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+
+<div style="display: flex; justify-content: space-between; text-align: center; font-weight: bold; margin-bottom: 30px;">
+    <div style="width: 45%;">
+        <p>BỘ GIÁO DỤC VÀ ĐÀO TẠO<br>
+        TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN</p>
+    </div>
+    <div style="width: 45%;">
+        <p>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>
+        Độc lập – Tự do – Hạnh phúc</p>
+    </div>
+</div>
+
+<div style="text-align: center; margin-bottom: 30px;">
+    <h3 style="margin-bottom: 5px;">ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</h3>
+    <p style="margin-top: 0;">(Detailed Course Syllabus)</p>
+</div>
+
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 15px;">
+    <tr style="background-color: #f2f2f2;">
+        <td colspan="2" style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">
+            1. THÔNG TIN TỔNG QUÁT (GENERAL INFORMATION)
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 30%; padding: 10px; border: 1px solid #ddd;">- Tên học phần (tiếng Việt):</td>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{{ hoc_phan['ten_tieng_viet'] }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">- Tên học phần (tiếng Anh):</td>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{{ hoc_phan['ten_tieng_anh'] }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">- Trình độ đào tạo:</td>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{{ hoc_phan['trinh_do_dao_tao'] }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">- Mã số học phần:</td>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{{ hoc_phan['ma_hoc_phan'] }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">- Số tín chỉ:</td>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{{ hoc_phan['so_tin_chi'] }}</td>
+    </tr>
+</table>
+
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 20px;">
+    <tr style="background-color: #f2f2f2;">
+        <td style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">
+            2. MỤC TIÊU HỌC PHẦN (COURSE OBJECTIVES)
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">
+            {% if muc_tieu %}
+                <ul style="margin: 0; padding-left: 20px;">
+                    {% for mt in muc_tieu %}
+                        <li style="margin-bottom: 8px;">{{ mt['noi_dung'] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p style="margin: 0; color: #666; font-style: italic;">Chưa có thông tin mục tiêu học phần.</p>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+<div style="text-align: center; margin-top: 30px;">
+    <a href="/" class="btn" style="text-decoration: none; padding: 10px 20px; background-color: #6c757d; color: white; border-radius: 4px;">⬅ Quay lại tìm kiếm</a>
+</div>
+
+{% endblock %}

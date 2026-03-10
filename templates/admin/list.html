@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Danh sách Học phần</h2>
+<a href="/admin/hoc-phan/add" class="btn">+ Thêm mới</a>
+
+<table>
+    <tr>
+        <th>Mã HP</th>
+        <th>Tên Tiếng Việt</th>
+        <th>Tín chỉ</th>
+        <th>Thao tác</th>
+    </tr>
+    {% for hp in hoc_phans %}
+    <tr>
+        <td>{{ hp['ma_hoc_phan'] }}</td>
+        <td>{{ hp['ten_tieng_viet'] }}</td>
+        <td>{{ hp['so_tin_chi'] }}</td>
+        <td>
+            <form action="/admin/hoc-phan/delete/{{ hp['id'] }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">Xóa</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

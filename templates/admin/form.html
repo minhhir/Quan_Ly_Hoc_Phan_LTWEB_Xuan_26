@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ action }} Học phần</h2>
+<form method="POST">
+    <label>Mã học phần:</label>
+    <input type="text" name="ma_hoc_phan" required>
+
+    <label>Tên Tiếng Việt:</label>
+    <input type="text" name="ten_tieng_viet" required>
+
+    <label>Tên Tiếng Anh:</label>
+    <input type="text" name="ten_tieng_anh">
+
+    <label>Trình độ đào tạo:</label>
+    <input type="text" name="trinh_do_dao_tao" value="Đại học">
+
+    <label>Số tín chỉ:</label>
+    <input type="number" name="so_tin_chi" value="3" required>
+
+    <button type="submit" class="btn">Lưu thông tin</button>
+</form>
+{% endblock %}

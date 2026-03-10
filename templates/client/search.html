@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Tìm kiếm Học phần</h2>
+<form method="POST" action="/">
+    <input type="text" name="searchInput" value="{{ search_text }}" placeholder="Nhập tên hoặc mã học phần...">
+    <button type="submit" class="btn">Tìm kiếm</button>
+</form>
+
+{% if hoc_phans %}
+    <ul>
+        {% for hp in hoc_phans %}
+            <li>
+                <a href="/hoc-phan/{{ hp['id'] }}">
+                    <strong>{{ hp['ma_hoc_phan'] }}</strong> - {{ hp['ten_tieng_viet'] }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
