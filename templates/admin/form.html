@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+    <h2>{{ action }} học phần</h2>
+    <p class="subtle">Điền thông tin chi tiết để {{ action.lower() }} học phần trong hệ thống.</p>
+
+    <form method="POST">
+        <div class="grid-2">
+            <div>
+                <label for="ma_hoc_phan">Mã học phần</label>
+                <input id="ma_hoc_phan" type="text" name="ma_hoc_phan" value="{{ hoc_phan['ma_hoc_phan'] if hoc_phan else '' }}" required>
+            </div>
+            <div>
+                <label for="so_tin_chi">Số tín chỉ</label>
+                <input id="so_tin_chi" type="number" min="1" name="so_tin_chi" value="{{ hoc_phan['so_tin_chi'] if hoc_phan else 3 }}" required>
+            </div>
+        </div>
+
+        <label for="ten_tieng_viet">Tên tiếng Việt</label>
+        <input id="ten_tieng_viet" type="text" name="ten_tieng_viet" value="{{ hoc_phan['ten_tieng_viet'] if hoc_phan else '' }}" required>
+
+        <label for="ten_tieng_anh">Tên tiếng Anh</label>
+        <input id="ten_tieng_anh" type="text" name="ten_tieng_anh" value="{{ hoc_phan['ten_tieng_anh'] if hoc_phan else '' }}" required>
+
+        <div class="grid-2">
+            <div>
+                <label for="trinh_do_dao_tao">Trình độ đào tạo</label>
+                <input id="trinh_do_dao_tao" type="text" name="trinh_do_dao_tao" value="{{ hoc_phan['trinh_do_dao_tao'] if hoc_phan else 'Đại học' }}" required>
+            </div>
+            <div>
+                <label for="khoa_id">Khoa phụ trách</label>
+                <select id="khoa_id" name="khoa_id" required>
+                    <option value="">Chọn khoa</option>
+                    {% for khoa in danh_sach_khoa %}
+                        <option value="{{ khoa['id'] }}" {% if hoc_phan and hoc_phan['khoa_id'] == khoa['id'] %}selected{% endif %}>
+                            {{ khoa['ten_khoa'] }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <label for="muc_tieu_text">Mục tiêu học phần</label>
+        <textarea id="muc_tieu_text" name="muc_tieu_text" rows="6" placeholder="Mỗi dòng là một mục tiêu học phần" required>{{ muc_tieu_text }}</textarea>
+
+        <button type="submit" class="btn">Lưu thông tin</button>
+        <a href="/admin/hoc-phan" class="btn btn-secondary">Quay lại danh sách</a>
+    </form>
+</section>
+{% endblock %}

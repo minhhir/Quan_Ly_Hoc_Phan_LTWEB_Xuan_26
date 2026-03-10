@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Học Phần</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a href="/" class="brand">QLHP</a>
+            <nav>
+                <a href="/">Trang chủ</a>
+          {% if session.get('role') == 'admin' %}
+            <a href="/admin/hoc-phan">Quản lý Học Phần</a>
+          {% endif %}
+          {% if session.get('user_id') %}
+            <a href="{{ url_for('auth.logout') }}">Đăng xuất</a>
+          {% else %}
+            <a href="{{ url_for('auth.login') }}">Đăng nhập</a>
+            <a href="{{ url_for('auth.signup') }}">Đăng ký</a>
+          {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel auth-card">
+    <h2>Dang nhap</h2>
+    <p class="subtle">Dang nhap de su dung tinh nang quan tri va phan quyen.</p>
+
+    <form method="POST">
+        <label for="username">Ten dang nhap</label>
+        <input id="username" type="text" name="username" value="{{ username }}" required>
+
+        <label for="password">Mat khau</label>
+        <input id="password" type="password" name="password" required>
+
+        <button type="submit" class="btn">Dang nhap</button>
+        <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">Tao tai khoan</a>
+    </form>
+</section>
+{% endblock %}

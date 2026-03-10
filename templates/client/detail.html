@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+    <div class="detail-header">
+        <h2>{{ hoc_phan['ten_tieng_viet'] }} ({{ hoc_phan['ma_hoc_phan'] }})</h2>
+        <p class="subtle">Đề cương chi tiết học phần</p>
+    </div>
+
+    <h3>Thông tin tổng quát</h3>
+    <dl class="meta">
+        <dt>Tên học phần (Tiếng Việt)</dt>
+        <dd>{{ hoc_phan['ten_tieng_viet'] }}</dd>
+        <dt>Tên học phần (Tiếng Anh)</dt>
+        <dd>{{ hoc_phan['ten_tieng_anh'] }}</dd>
+        <dt>Trình độ đào tạo</dt>
+        <dd>{{ hoc_phan['trinh_do_dao_tao'] }}</dd>
+        <dt>Mã học phần</dt>
+        <dd>{{ hoc_phan['ma_hoc_phan'] }}</dd>
+        <dt>Số tín chỉ</dt>
+        <dd>{{ hoc_phan['so_tin_chi'] }}</dd>
+    </dl>
+
+    <h3>Mục tiêu học phần</h3>
+    {% if muc_tieu %}
+        <ol>
+            {% for mt in muc_tieu %}
+                <li>{{ mt['noi_dung'] }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p class="subtle">Chưa có thông tin mục tiêu học phần.</p>
+    {% endif %}
+
+    <a href="/" class="btn btn-secondary">Quay lại tìm kiếm</a>
+</section>
+
+{% endblock %}

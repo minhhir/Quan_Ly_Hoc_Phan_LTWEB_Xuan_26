@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel auth-card">
+    <h2>Dang ky</h2>
+    <p class="subtle">Tai khoan moi duoc tao voi quyen user.</p>
+
+    <form method="POST">
+        <label for="username">Ten dang nhap</label>
+        <input id="username" type="text" name="username" value="{{ username }}" required>
+
+        <label for="password">Mat khau</label>
+        <input id="password" type="password" name="password" minlength="6" required>
+
+        <label for="confirm_password">Xac nhan mat khau</label>
+        <input id="confirm_password" type="password" name="confirm_password" minlength="6" required>
+
+        <button type="submit" class="btn">Dang ky</button>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Da co tai khoan</a>
+    </form>
+</section>
+{% endblock %}

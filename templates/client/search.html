@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+    <h2>Tra cứu học phần</h2>
+    <p class="subtle">Nhập mã hoặc tên học phần để xem thông tin đề cương chi tiết.</p>
+
+    <form method="POST" action="/">
+        <input type="text" name="searchInput" value="{{ search_text }}" placeholder="Ví dụ: LTWEB, Lập trình web...">
+        <button type="submit" class="btn">Tìm kiếm</button>
+    </form>
+
+    {% if hoc_phans %}
+        <ul class="list-courses">
+            {% for hp in hoc_phans %}
+                <li>
+                    <a href="/hoc-phan/{{ hp['id'] }}">
+                        <strong>{{ hp['ma_hoc_phan'] }}</strong> - {{ hp['ten_tieng_viet'] }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="subtle">Không có học phần phù hợp với từ khóa tìm kiếm.</p>
+    {% endif %}
+</section>
+{% endblock %}
